@@ -68,7 +68,16 @@ theme: next
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
-  type: git
-  repo: https://github.com/keel/keel.github.io.git
-  branch: master
-  message:
+- type: git
+ repo: https://github.com/keel/keel.github.io.git
+ branch: master
+ message:
+- type: ftpsync
+  host: 218.85.134.14
+  user: k99k.com
+  pass: ZpID1JHr
+  remote: ./wwwroot
+  port: 21
+  ignore: ['v3','.DS_Store','cert','jQuery_getting_started.html']
+  connections: 1
+  verbose: true
