@@ -69,7 +69,7 @@ theme: next
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
 - type: git
-  repo: https://keel:Jsinfo2901@github.com/keel/keel.github.io.git
+  repo: git@github.com:keel/keel.github.io.git
   branch: master
   message:
 - type: ftpsync
