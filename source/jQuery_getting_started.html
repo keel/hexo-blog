@@ -1,0 +1,571 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jQuery中文入门教程_译自Getting Started with jQuery</title>
+<meta name="Author" content="Keel" />
+<meta name="Keywords" content="jQuery" />
+<meta name="Description" content="jQuery 中文入门指南，翻译加实例，jQuery的起点教程，译自Getting Started with jQuery" />
+<style type="text/css">
+<!--
+pre {
+	white-space: pre;
+	background-color: #eee;
+	width: 90%;
+	border: 1px dotted black;
+	display: block;
+	padding: 7px;
+}
+h2 {
+	margin-top: 2em;
+}
+h4 { margin-bottom: 0em; }
+.log {
+	color:green;
+}
+.red{color:red;font-weight: bold;font-size: 9pt;}
+#ad{position:absolute;left:5px;top:5px;width:728px; height:90px; }
+#org{padding-top:90px;position:relative ;top:1px:width:1px; }
+-->
+</style>
+</head>
+<body>
+<h1>jQuery中文入门指南，翻译加实例，jQuery的起点教程</h1>
+<div>
+	<h3>中文版译者：<a href="http://www.k99k.com/">Keel</a></h3>
+	<p>此文以实例为基础一步步说明了jQuery的工作方式。现以中文翻译（添加我的补充说明）如下。如有相关意见或建议请 <a href="mailto:keel.sike(at)gmail.com">EMAIL</a> 告知。或者在 <a href="http://cc9c.blogspot.com/">BLOG</a>中留言。</p>
+	<p>英文原版：<a href="http://docs.jquery.com/Tutorials:Getting_Started_with_jQuery">http://docs.jquery.com/Tutorials:Getting_Started_with_jQuery<!-- http://jquery.bassistance.de/jquery-getting-started.html --></a> ，感谢原文作者 <a href="http://bassistance.de/">Jörn Zaefferer</a> <strong>本文发布已征求原作者同意。</strong> </p>
+	<p class="red"> 说明:在本教程发布之后，得到了几个网友的指正，对部分内容作了修正，但在jQuery版本不断更新的情况下，教程中的某些内容已经过时（尤其是1.3以上版本），在忠于原文的基础上，我将这部分内容加以标红的补充说明，希望更多的前端开发者能对此文提出宝贵意见，谢谢！ --2009-3-10</p>
+	<p>另外我认为在学习过程中,有两个API文档你要打开随时查看:</p>
+	<ul>
+	<li><a href="http://api.jquery.com/" target="_blank">http://api.jquery.com/</a> <span class="red">[注：已更新为jquery新地址]</span></li>
+	<li><a href="http://visualjquery.com/" target="_blank">http://visualjquery.com/</a></li>
+	</ul>
+如果想了解更多jQuery及插件信息，可<a href="http://www.k99k.com">访问本站首页</a>.</div>
+<div id="org">
+<h4>以下部分为原文翻译:</h4>
+<hr />
+<div>
+<h2>jQuery入门指南教程</h2>
+<p>
+这个指南是一个对jQuery库的说明，要求读者了解HTML(DOM)和CSS的一些常识。它包括了一个简单的Hello World的例子，选择器和事件基础，AJAX、FX的用法，以及如何制作jQuery的插件。
+
+这个指南包括了很多代码，你可以copy它们，并试着修改它们，看看产生的效果。
+</p>
+<h2>内容提要</h2>
+	<ol>
+		<li><a href="#setup">安装</a></li>
+		<li><a href="#hello">Hello jQuery</a></li>
+		<li><a href="#find">Find me:使用选择器和事件</a></li>
+		<li><a href="#rate">Rate me:使用AJAX</a></li>
+		<li><a href="#animate">Animate me(让我生动起来):使用FX</a></li>
+		<li><a href="#sort">Sort me(将我有序化):使用tablesorter插件(表格排序)</a></li>
+		<li><a href="#plug">Plug me:制作您自己的插件</a></li>
+		<li><a href="#next">Next steps(下一步)</a></li>
+	</ol>
+</div>
+
+<div>
+	<h2 id="setup">安装</h2>
+	<p>一开始,我们需要一个jQuery的库,最新的下载可以到<a
+		href="http://docs.jquery.com/Downloading_jQuery">这里</a>找到。这个指南提供一个基本包含实例的包供下载.</p>
+	<p>下载：<a class="download" href="jquery-starterkit.zip">jQuery Starterkit</a></p>
+	<p class="log">
+		(译者Keel注:一定要下载这个包，光看文章不实践肯定是不行的。)
+	</p>
+	<p class="instruction">下载后解压缩，然后用你最喜欢的文本编辑器打开starterkit.html和custom.js这两个文件。<span class="log">(译者Keel注:这两个就是例子文件,所有的例子都用这两个例子作出,custom.js写jQuery代码,starterkit.html观察效果.建议用editPlus打开) </span></p>
+
+	<p>现在,我们就已经做好了一切准备来进行这个著名的"Hello world"例子.</p>
+
+	<h4>本章的相关链接:</h4>
+	<ul>
+		<li><a href="jquery-starterkit.zip">Starterkit</a></li>
+		<li><a href="http://docs.jquery.com/Downloading_jQuery">jQuery Downloads</a></li>
+	</ul>
+</div>
+
+<div>
+	<h2 id="hello">Hello jQuery</h2>
+	<p>在做所有事情之前,我们要让jQuery读取和处理文档的DOM,必须尽可能快地在DOM载入后开始执行事件,所以,我们用一个ready事件作为处理HTML文档的开始.看看我们打开的custom.js这个文件,里面已经准备好了:</p>
+	<pre>
+$(document).ready(function() {
+	// do stuff when DOM is ready
+});</pre>
+
+	<p>放一个简单的alert事件在需要等DOM完成载入,所以我们把任务稍稍变复杂一点:在点击任何一个链接时显示一个alert.</p>
+	<pre>
+$(document).ready(function() {
+	$("a").click(function() {
+		alert("Hello world!");
+	});
+});</pre>
+
+	<p>这样在你点击页面的一个链接时都会触发这个"Hello world"的提示。</p>
+	<p class="log">(译者Keel注:请照此代码修改custom.js并保存,然后用浏览器打开starterkit.html观察效果。)</p>
+	<p>让我们看一下这些修改是什么含义。$("a") 是一个jQuery选择器(selector),在这里，它选择所有的a标签<span class="log">（译者Keel注：即&lt;a&gt;&lt;/a&gt;）</span>，$号是 jQuery “类”(jQuery "class")的一个别称，因此$()构造了一个新的jQuery 对象(jQuery object)。函数 click() 是这个jQuery对象的一个方法，它绑定了一个单击事件到所有选中的标签(这里是所有的a标签),并在事件触发时执行了它所提供的alert方法.</p>
+	<p>这里有一个拟行相似功能的代码:</p>
+	<pre>
+&lt;a href="#" onclick="alert('Hello world')"&gt;Link&lt;/a&gt;</pre>
+
+	<p>不同之处很明显,用jQuery不需要在每个a标签上写onclick事件,所以我们拥有了一个整洁的结构文档(HTML)和一个行为文档(JS),达到了将结构与行为分开的目的,就像我们使用CSS追求的一样.</p>
+	<p>下面我们会更多地了解到选择器与事件.</p>
+
+	<h4>本章的相关链接:</h4>
+	<ul>
+		<li><a href="http://docs.jquery.com/Core">jQuery Core</a></li>
+		<li><a href="http://docs.jquery.com/Selectors">jQuery Selectors</a></li>
+		<li><a href="http://docs.jquery.com/Events/">jQuery  Events</a></li>
+	</ul>
+</div>
+
+<div>
+	<h2 id="find">Find me:使用选择器和事件</h2>
+	<p>jQuery提供两种方式来选择html的elements，第一种是用CSS和Xpath选择器联合起来形成一个字符串来传送到jQuery的构造器（如：$("div &gt; ul a")）；第二种是用jQuery对象的几个methods(方法)。这两种方式还可以联合起来混合使用。</p>
+	<p>为了测试一下这些选择器，我们来试着在我们starterkit.html中选择并修改第一个ordered list.</p>
+	<p>一开始，我们需要选择这个list本身，这个list有一个ID叫“orderedlist”，通常的javascript写法是document.getElementById("orderedlist").在jQuery中，我们这样做：</p>
+	<pre>
+$(document).ready(function() {
+	$("#orderedlist").addClass("red");
+});</pre>
+	<p>这里将starterkit中的一个CSS样式red附加到了orderedlist上<span class="log">(译者Keel注：参考测试包中的css目录下的core.css，其中定义了red样式)</span>。因此，在你刷新了starterkit.html后，你将会看到第一个有序列表(ordered list )背景色变成了红色，而第二个有序列表没有变化.</p>
+	<p>现在，让我们添加一些新的样式到list的子节点.</p>
+	<pre>
+$(document).ready(function() {
+	$("#orderedlist &gt; li").addClass("blue");
+});</pre>
+	<p>这样，所有orderedlist中的li都附加了样式"blue"。</p>
+	<p>现在我们再做个复杂一点的，当把鼠标放在li对象上面和移开时进行样式切换，但只在list的最后一个element上生效。</p>
+	<pre>
+$(document).ready(function() {
+	$("#orderedlist li:last").hover(function() {
+		$(this).addClass("green");
+	}, function() {
+		$(this).removeClass("green");
+	});
+});</pre>
+	<p>还有大量的类似的<a class="doc" href="http://docs.jquery.com/CSS"
+		title="Documentation for CSS selectors">CSS</a>和<a class="doc"
+		href="http://jquery.com/docs/Base/Expression/XPath/" title="Documentation for XPath selectors">XPath</a>例子，更多的例子和列表可以在<a class="doc"
+		href="http://docs.jquery.com/Selectors" title="Documentation for base selectors">这里</a>找到。<span class="log">（译者Keel注：入门看此文，修行在个人，要想在入门之后懂更多，所以这段话的几个链接迟早是要必看的！不会又要翻译吧...^_^!）</span></p>
+	<p>每一个onXXX事件都有效，如onclick,onchange,onsubmit等，都有jQuery等价表示方法<span class="log">（译者Keel注：jQuery不喜欢onXXX，所以都改成了XXX，去掉了on）</span>。<a class="doc" href="http://docs.jquery.com/Events"
+		title="Documentation for advanced events">其他的一些事件</a>，如ready和hover,也提供了相应的方法。</p>
+	<p>你可以在<a href="http://visualjquery.com/">Visual jQuery</a>找到全部的事件列表，在Events栏目下.</p>
+	<p>用这些选择器和事件你已经可以做很多的事情了，但这里有一个更强的好东东！</p>
+	<pre>
+$(document).ready(function() {
+	$("#orderedlist").find("li").each(function(i) {
+		$(this).html( $(this).html() + " BAM! " + i );
+	});
+});</pre>
+	<p>find() 让你在已经选择的element中作条件查找,因此 $("#orderedlist).find("li") 就像 $("#orderedlist li")一样。each()方法迭代了所有的li，并可以在此基础上作更多的处理。 大部分的方法,如addClass(), 都可以用它们自己的 each() 。在这个例子中, html()用来获取每个li的html文本, 追加一些文字，并将之设置为li的html文本。<span class="log">（译者Keel注：从这个例子可以看到.html()方法是获取对象的html代码，而.html('xxx')是设置'xxx'为对象的html代码）</span></p>
+	<p>另一个经常碰到的任务是在没有被jQuery覆盖的DOM元素上call一些方法，想像一个在你用AJAX方式成功提交后的reset：</p>
+	<pre>
+$(document).ready(function() {
+	// use this to reset a single form
+	$("#reset").click(function() {
+		$("form")[0].reset();
+	});
+});</pre>
+<p class="log">（译者Keel注：这里作者将form的id也写成了form，源文件有&lt;form id="form"&gt;，这是非常不好的写法，你可以将这个ID改成form1或者testForm，然后用$("#form1")或者$("#testForm")来表示它，再进行测试。）</p>
+	<p>上面这个代码选择了所有的"form"元素，并在其中的第一个上call了一个reset()。如果你有一个以上的form，你可以这样做：</p>
+	<pre>
+$(document).ready(function() {
+	// use this to reset several forms at once
+	$("#reset").click(function() {
+		$("form").each(function() {
+			this.reset();
+		});
+	});
+});</pre>
+<p class="log">（译者Keel注：请注意一定要亲自将这些代码写在custom.js中并在starterkit.html上测试效果才能有所体会！必要时要观察starterkit.html的html代码）</p>
+	<p>这样你在点击Reset链接后，就选择了文档中所有的form元素，并对它们都执行了一次reset()。</p>
+	<p>还有一个你可能要面对的问题是不希望某些特定的元素被选择。jQuery 提供了filter() 和not() 方法来解决这个问题。 filter()以过滤表达式来减少不符合的被选择项, not()则用来取消所有符合过滤表达式的被选择项. 考虑一个无序的list，你想要选择所有的没有ul子元素的li元素。</p>
+	<pre>
+$(document).ready(function() {
+	$("li").not(":has(ul)").css("border", "1px solid black");//原文为$("li").not("[ul]").css("border", "1px solid black");
+});</pre>
+	<p>这个代码选择了所有的li元素，然后去除了有ul子元素的li元素。刷新浏览器后，所有的li元素都有了一个边框，只有ul子元素的那个li元素例外。</p>
+	<p class="log">（译者Keel注：请注意体会方便之极的css()方法，并再次提醒请务必实际测试观察效果，比方说换个CSS样式呢？再加一个CSS样式呢？像这样：$("li").not("[ul]").css("border", "1px solid black").css("color","red");）</p>
+	<p>上面代码中的[expression] 语法是从XPath而来，可以在子元素和属性(elements and attributes)上用作过滤器，比如你可能想选择所有的带有name属性的链接:</p>
+	<pre>
+$(document).ready(function() {
+	$("a[name]").css("background-color","#eee"); //原文为“$("a[@name]").background("#eee");”在jQuery1.2及以上版本中,@符号应该去除,background方法被css方法取代
+});</pre>
+	<p>这个代码给所有带有name属性的链接加了一个背景色。<span class="log">（译者Keel注：这个颜色太不明显了，建议写成$("a[name]").css("background-color","#eee");）</span> <span class="red">[注：在jQuery1.2及以上版本中,@符号应该去除,下文中不再说明]</span></p>
+	<p>更常见的情况是以name来选择链接，你可能需要选择一个有特点href属性的链接，这在不同的浏览器下对href的理解可能会不一致，所以我们的部分匹配("*=")的方式来代替完全匹配("=")：</p>
+	<pre>
+$(document).ready(function() {
+	$("a[href*=/content/gallery]").click(function() {
+		// do something with all links that point somewhere to /content/gallery
+	});
+});</pre>
+	<p>到现在为止，选择器都用来选择子元素或者是过滤元素。另外还有一种情况是选择上一个或者下一个元素，比如一个FAQ的页面，答案首先会隐藏，当问题点击时，答案显示出来，jQuery代码如下：</p>
+	<pre>
+$(document).ready(function() {
+	$('#faq').find('dd').hide().end().find('dt').click(function() {
+         var answer = $(this).next();
+         if (answer.is(':visible')) {
+             answer.slideUp();
+         } else {
+             answer.slideDown();
+         }
+     });
+});</pre>
+	<p>这里我们用了一些链式表达法来减少代码量，而且看上去更直观更容易理解。像'#faq' 只选择了一次，利用end()方法，第一次find()方法会结束(undone)，所以我们可以接着在后面继续find('dt')，而不需要再写$('#faq').find('dt')。</p>
+	<p>在点击事件中的，我们用 $(this).next() 来找到dt下面紧接的一个dd元素，这让我们可以快速地选择在被点击问题下面的答案。</p>
+	<p class="log">（译者Keel注：这个例子真是太酷了，FAQ中的答案可以收缩！从利用next()的思路到实现这些效果都有很多地方需要我们消化，注意 if (answer.is(':visible'))用法，注意answer.slideUp();不懂的地方赶紧查我在最开始提到的两个必看API文档）</p>
+	<p>除了选择同级别的元素外，你也可以选择父级的元素。可能你想在用户鼠标移到文章某段的某个链接时，它的父级元素--也就是文章的这一段突出显示，试试这个：</p>
+	<pre>
+$(document).ready(function() {
+	$("a").hover(function() {
+		$(this).parents("p").addClass("highlight");
+	}, function() {
+		$(this).parents("p").removeClass("highlight");
+	});
+});</pre>
+	<p>测试效果可以看到，移到文章某段的链接时，它所在的段全用上highlight样式，移走之后又恢复原样。</p>
+	<span class="log">（译者Keel注：highlight是core.css中定义的样式，你也可以改变它，注意这里有第二个function()这是hover方法的特点，请在API文档中查阅hover，上面也有例子说明）</span>
+
+	<p>在我们继续之前我们先来看看这一步： jQuery会让代码变得更短从而更容易理解和维护，下面是$(document).ready(callback)的缩写法：</p>
+	<pre>
+$(function() {
+	// code to execute when the DOM is ready
+});</pre>
+	<p>应用到我们的Hello world例子中，可以这样:</p>
+	<pre>
+$(function() {
+	$("a").click(function() {
+		alert("Hello world!");
+	});
+});</pre>
+	<p>现在，我们手上有了这些基础的知识，我们可以更进一步的探索其它方面的东西，就从AJAX开始！</p>
+
+	<h4>本章的相关链接:</h4>
+	<ul>
+		<li><a href="http://api.jquery.com/">jQuery API documentation</a></li>
+		<li><a href="http://visualjquery.com/">Visual jQuery - A categorized browsable API documentation</a></li>
+		<li><a href="http://jquery.com/docs/Base/Expression/CSS/">jQuery Expressions: CSS</a></li>
+		<li><a href="http://jquery.com/docs/Base/Expression/XPath/">jQuery Expressions: XPath</a></li>
+		<li><a href="http://jquery.com/docs/Base/Expression/Custom/">jQuery Expressions: Custom</a></li>
+		<li><a href="http://jquery.com/docs/EventModule/">jQuery Special Events</a></li>
+		<li><a href="http://jquery.com/docs/Base/Traverse/">jQuery DOM Traversing</a></li>
+	</ul>
+</div>
+
+<div>
+	<h2 id="rate">Rate me:使用AJAX</h2>
+	<p>在这一部分我们写了一个小小的AJAX应用，它能够rate一些东西<span class="log">（译Keel注：就是对某些东西投票）</span>，就像在youtube.com上面看到的一样。</p>
+	<p>首先我们需要一些服务器端代码，这个例子中用到了一个PHP文件，读取rating参数然后返回rating总数和平均数。看一下<a
+		href="rate.phps">rate.php</a>代码.</p>
+	<p>虽然这些例子也可以不使用AJAX来实现，但显示我们不会那么做，我们用jQuery生成一个DIV容器，ID是"rating".</p>
+	<pre>
+$(document).ready(function() {
+	// generate markup
+	var ratingMarkup = ["Please rate: "];
+	for(var i=1; i &lt;= 5; i++) {
+		ratingMarkup[ratingMarkup.length] = "&lt;a href='#'&gt;" + i + "&lt;/a&gt;&nbsp;";
+	}
+	// add markup to container and applier click handlers to anchors
+	$("#rating").append( ratingMarkup.join('') ).find("a").click(function(e) {
+		e.preventDefault();
+		// send requests
+		$.post("rate.php", {rating: $(this).html()}, function(xml) {
+			// format result
+			var result = [
+				"Thanks for rating, current average: ",
+				$("average", xml).text(),
+				", number of votes: ",
+				$("count", xml).text()
+			];
+			// output result
+			$("#rating").html(result.join(''));
+		} );
+	});
+});</pre>
+	<p>这段代码生成了5个链接，并将它们追加到id为"rating"容器中，当其中一个链接被点击时，该链接标明的分数就会以rating参数形式发送到rate.php，然后，结果将以XML形式会从服务器端传回来，添加到容器中，替代这些链接。</p>
+	<p>如果你没有一个安装过PHP的webserver，你可以看看这个<a href="example-rateme.html">在线的例子</a>.</p>
+	<p>不使用javascript实现的例子可以访问 <a
+		href="http://www.softonic.de/ie/51494">softonic.de</a> 点击 "Kurz bewerten!"</p>
+	<p>更多的AJAX方法可以从<a class="doc"
+		href="http://jquery.com/docs/AJAXModule/" title="Documentation for AJAX methods">这里</a> 找到，或者看看<a href="http://visualjquery.com/">API文档</a> 下面的AJAX filed under AJAX.</p>
+
+	<p class="log">（译者Keel注：这个在线实例从国内访问还是比较慢的，点击后要等一会儿才能看到结果，可以考虑对它进行修改，比如加上loading，投票后加上再投票的返回链接等。此外，这个例子中还是有很多需要进一步消化的地方，看不懂的地方请参考API文档。）</p>
+
+
+	<p>一个在使用AJAX载入内容时经常发生的问题是：当载入一个事件句柄到一个HTML文档时，还需要在载入内容上应用这些事件，你不得不在内容加载完成后应用这些事件句柄，为了防止代码重复执行，你可能用到如下一个function:</p>
+	<pre>
+// lets use the shortcut
+$(function() {
+	var addClickHandlers = function() {
+		$("a.clickMeToLoadContent").click(function() {
+			$("#target").load(this.href, addClickHandlers);
+		});
+	};
+	addClickHandlers();
+});</pre>
+	<p>现在，addClickHandlers只在DOM载入完成后执行一次，这是在用户每次点击具有clickMeToLoadContent 这个样式的链接并且内容加载完成后.</p>
+	<p>请注意addClickHandlers函数是作为一个局部变量定义的，而不是全局变量(如：function addClickHandlers() {...})，这样做是为了防止与其他的全局变量或者函数相冲突.</p>
+  <p>另一个常见的问题是关于回调(callback)的参数。你可以通过一个额外的参数指定回调的方法，简单的办法是将这个回调方法包含在一个其它的function中:</p>
+  <pre>
+// get some data
+var foobar = ...;
+// specify handler, it needs data as a paramter
+var handler = function(data) {
+  ...
+};
+// add click handler and pass foobar!
+$('a').click( function(event) { handler(foobar); } );
+
+// if you need the context of the original handler, use apply:
+$('a').click( function(event) { handler.apply(this, [foobar]); } );</pre>
+	<p>用到简单的AJAX后，我们可以认为已经非常之“web2.0”了，但是到现在为止，我们还缺少一些酷炫的效果。下一节将会谈到这些效果.</p>
+
+	<h4>本章的相关链接:</h4>
+	<ul>
+		<li><a href="http://jquery.com/docs/AJAXModule/">jQuery AJAX Module</a></li>
+		<li><a href="http://api.jquery.com/">jQuery API: Contains description and examples for append and all other jQuery methods</a></li>
+		<li><a href="http://jquery.com/demo/thickbox/">ThickBox: A jQuery plugin that uses jQuery to enhance the famous lightbox</a></li>
+	</ul>
+</div>
+
+
+<div>
+	<h2 id="animate">Animate me(让我生动起来):使用FX</h2>
+	<p>一些动态的效果可以使用 <code>show()</code> 和 <code>hide()</code>来表现:</p>
+	<pre>
+$(document).ready(function() {
+	$("a").toggle(function() {
+		$(".stuff").hide('slow');
+	}, function() {
+		$(".stuff").show('fast');
+	});
+});</pre>
+	<p>你可以与 <code>animate()</code>联合起来创建一些效果,如一个带渐显的滑动效果:</p>
+	<pre>
+$(document).ready(function() {
+	$("a").toggle(function() {
+		$(".stuff").animate({
+			height: 'hide',
+			opacity: 'hide'
+		}, 'slow');
+	}, function() {
+		$(".stuff").animate({
+			height: 'show',
+			opacity: 'show'
+		}, 'slow');
+	});
+});</pre>
+	<p>很多不错的效果可以访问<a href="http://interface.eyecon.ro/">interface plugin collection</a>. 这个站点提供了很多demos和文档</p>
+	<p>这些效果插件是位于jQuery插件列表的前面的，当然也有很多其他的插件，比如我们下一章讲到的表格排序插件。</p>
+
+	<h4>本章的相关链接:</h4>
+	<ul>
+		<li><a href="http://jquery.com/docs/FxModule/">jQuery FX Module</a></li>
+		<li><a href="http://interface.eyecon.ro/">Interface plugin</a></li>
+	</ul>
+</div>
+
+
+
+<div>
+	<h2 id="sort">Sort me(将我有序化):使用tablesorter插件(表格排序)</h2>
+	<p>这个表格排序插件能让我们在客户端按某一列进行排序，引入jQuery和这个插件的js文件，然后告诉插件你想要哪个表格拥有排序功能。</p>
+	<p>要测试这个例子，先在starterkit.html中加上像下面这一行的代码：</p>
+<pre>
+&lt;script src="lib/jquery.tablesorter.js" type="text/javascript"&gt;&lt;/script&gt;</pre>
+	<p>然后可以这样调用不着:</p>
+	<pre>
+$(document).ready(function() {
+	$("#large").tableSorter();
+});</pre>
+	<p>现在点击表格的第一行head区域，你可以看到排序的效果，再次点击会按倒过来的顺序进行排列。</p>
+	<p>这个表格还可以加一些突出显示的效果，我们可以做这样一个隔行背景色（斑马线）效果:</p>
+	<pre>
+$(document).ready(function() {
+	$("#large").tableSorter({
+		stripingRowClass: ['odd','even'],	// Class names for striping supplyed as a array.
+		stripRowsOnStartUp: true		// Strip rows on tableSorter init.
+	});
+});</pre>
+	<p>关于这个插件的更多例子和文档可以在 <a
+		href="http://motherrussia.polyester.se/jquery-plugins/tablesorter/">tablesorter首页</a>找到.</p>
+	<p>几乎所有的特件都是这样用的:先include插件的js文件,然后在某些元素上使用插件定义的方法,当然也有一些参数选项是可以配置的</p>
+	<p>经常更新的插件列表可以从jQuery官方站 <a href="http://jquery.com/plugins/" title="Plugins for jQuery">on the jQuery site</a>找到.</p>
+	<p>当你更经常地使用jQuery时,你会发现将你自己的代码打包成插件是很有用处的,它能方便地让你的公司或者其他人进行重用.下一章我们将谈到如何构建一个自己的插件.</p>
+
+	<h4>本章的相关链接:</h4>
+	<ul>
+		<li><a href="http://jquery.com/plugins/">Plugins for jQuery</a></li>
+		<li><a href="http://motherrussia.polyester.se/jquery-plugins/tablesorter/">Tablesorter Plugin</a></li>
+	</ul>
+</div>
+
+
+<div>
+	<h2 id="plug">Plug me:制作自己的插件</h2>
+	<p>写一个自己的jQuery插件是非常容易的,如果你按照下面的原则来做,可以让其他人也容易地结合使用你的插件.</p>
+	<ol>
+		<li>为你的插件取一个名字,在这个例子里面我们叫它"foobar".</li>
+		<li>创建一个像这样的文件:jquery.[yourpluginname].js,比如我们创建一个jquery.foobar.js</li>
+		<li>创建一个或更多的插件方法,使用继承jQuery对象的方式,如:
+			<pre>
+jQuery.fn.foobar = function() {
+	// do something
+};</pre>
+		</li>
+		<li>可选的:创建一个用于帮助说明的函数,如:
+			<pre>
+jQuery.fooBar = {
+	height: 5,
+	calculateBar = function() { ... },
+	checkDependencies = function() { ... }
+};</pre>
+			<p>你现在可以在你的插件中使用这些帮助函数了:</p>
+			<pre>
+jQuery.fn.foobar = function() {
+	// do something
+	jQuery.foobar.checkDependencies(value);
+	// do something else
+};</pre>
+		</li>
+		<li>可选的l:创建一个默认的初始参数配置,这些配置也可以由用户自行设定,如:
+			<pre>
+jQuery.fn.foobar = function(options) {
+	var settings = {
+		value: 5,
+		name: "pete",
+		bar: 655
+	};
+	if(options) {
+		jQuery.extend(settings, options);
+	}
+};</pre>
+		<p>现在可以无需做任何配置地使用插件了,默认的参数在此时生效:</p>
+			<pre>
+$("...").foobar();</pre>
+		<p>或者加入这些参数定义:</p>
+			<pre>
+$("...").foobar({
+	value: 123,
+	bar: 9
+});</pre>
+		</li>
+	</ol>
+	<p>如果你release你的插件, 你还应该提供一些例子和文档,大部分的插件都具备这些良好的参考文档.</p>
+	<p>现在你应该有了写一个插件的基础,让我们试着用这些知识写一个自己的插件.</p>
+	<p>很多人试着控制所有的radio或者checkbox是否被选中,比如:</p>
+<pre>
+$("input[type='checkbox']").each(function() {
+	this.checked = true;
+	// or, to uncheck
+	this.checked = false;
+	// or, to toggle
+	this.checked = !this.checked;
+});</pre>
+	<div class="red">注：在jQuery1.2及以上版本中，选择所有checkbox应该使用 input:checkbox , 因此以上代码第一行可写为: <br />  $('input:checkbox').each(function() {</div>
+	<p>无论何时候，当你的代码出现each时，你应该重写上面的代码来构造一个插件,很直接地:</p>
+	<pre>
+$.fn.check = function() {
+	return this.each(function() {
+		this.checked = true;
+	});
+};</pre>
+	<p>这个插件现在可以这样用:</p>
+	<pre>$('input:checkbox').check();
+</pre> <div class="red">注：在jQuery1.2及以上版本中，选择所有checkbox应该使用 input:checkbox 原文为：$("input[type='checkbox']").check();</div>
+	<p>现在你应该还可以写出uncheck()和toggleCheck()了.但是先停一下,让我们的插件接收一些参数.</p>
+	<pre>
+$.fn.check = function(mode) {
+	var mode = mode || 'on'; // if mode is undefined, use 'on' as default
+	return this.each(function() {
+		switch(mode) {
+		case 'on':
+			this.checked = true;
+			break;
+		case 'off':
+			this.checked = false;
+			break;
+		case 'toggle':
+			this.checked = !this.checked;
+			break;
+		}
+	});
+};</pre>
+	<p>这里我们设置了默认的参数,所以将"on"参数省略也是可以的,当然也可以加上"on","off", 或 "toggle",如:</p>
+<pre>
+$("input[type='checkbox']").check();
+$("input[type='checkbox']").check('on');
+$("input[type='checkbox']").check('off');
+$("input[type='checkbox']").check('toggle');</pre>
+	<p>如果有多于一个的参数设置会稍稍有点复杂,在使用时如果只想设置第二个参数,则要在第一个参数位置写入null.</p>
+	<p>从上一章的tablesorter插件用法我们可以看到,既可以省略所有参数来使用或者通过一个 key/value 对来重新设置每个参数.</p>
+	<p>作为一个练习,你可以试着将 <a href="#rate">第四章</a> 的功能重写为一个插件.这个插件的骨架应该是像这样的:</p>
+	<pre>
+$.fn.rateMe = function(options) {
+	var container = this; // instead of selecting a static container with $("#rating"), we now use the jQuery context
+
+	var settings = {
+		url: "rate.php"
+		// put more defaults here
+		// remember to put a comma (",") after each pair, but not after the last one!
+	};
+
+	if(options) { // check if options are present before extending the settings
+		$.extend(settings, options);
+	}
+
+	// ...
+	// rest of the code
+	// ...
+
+	return this; // if possible, return "this" to not break the chain
+});</pre>
+</div>
+
+<div>
+	<h2 id="next">Next steps(下一步)</h2>
+	<p>如果你想做更好的javascript开发,建议你使用一个叫 <a href="http://getfirebug.com/">FireBug</a>的firefox插件. 它提供了断点调试(比alert强多了)、观察DOM变化等很多漂亮的功能</p>
+	<p>如果你还有未解决的问题，或者新的想法与建议，你可以使用jQuery的邮件列表 <a href="http://jquery.com/discuss">jQuery mailing
+	list</a>.</p>
+	<p>关于这个指南的任何事情，你可以写<a href="mailto:enchos[at]gmx[dot]net">mail</a>给作者或者发表评论在他的日志：<a href="http://bassistance.de/index.php/2006/09/12/jquery-getting-started-guide/">blog</a>.</p>
+
+	<p class="log">关于这个指南的翻译任何事情，你可以写<a href="mailto:keel.sike[at]gmail.com">mail</a>给我.或者在 <a href="http://cc9c.blogspot.com/">BLOG</a>中留言.</p>
+</div>
+
+
+<div>
+	<h3>还有什么...</h3>
+	<p>大大感谢John Resig创造了这么好的library! 感谢jQuery community 为John提供了如此多的咖啡和其他的一切!</p>
+</div>
+
+<h4><a href="http://bassistance.de">&copy; 2006, Jörn Zaefferer</a> - last update: 2006-09-12</h4>
+<h4>中文版翻译:<a href="http://www.k99k.com/">Keel</a> 上次更新:2006-12-13   --  最后更新: 2009-3-10<!-- 2006-12-13 -->
+<a href="http://www.k99k.com">访问本站首页</a></h4>
+<div id="ad">
+<script type="text/javascript"><!--
+google_ad_client = "pub-9953772310597878";
+/* jquery-728x90, 创建于 10-4-6 */
+google_ad_slot = "0735632391";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-333331-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+</body>
+</html>

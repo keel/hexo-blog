@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"remote",
+				"remotePath"
+			],
+			[
 				"to",
 				"toMTime"
 			],
@@ -510,28 +514,45 @@
 			[
 				"getli",
 				"getListUpdateJst"
-			],
-			[
-				"getl",
-				"getListNewJst"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "source/_posts/hello-world.md",
+			"file": "source/_posts/nodejs-trap.md",
 			"settings":
 			{
-				"buffer_size": 815,
+				"buffer_size": 819,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "source/_posts/try-hexo.md",
+			"settings":
+			{
+				"buffer_size": 393,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "_config.yml",
+			"settings":
+			{
+				"buffer_size": 1778,
 				"line_ending": "Unix"
 			}
 		}
 	],
 	"build_system": "Packages/User/node.sublime-build",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
 	"command_palette":
 	{
 		"height": 291.0,
+		"last_filter": "",
 		"selected_items":
 		[
 			[
@@ -743,7 +764,11 @@
 	},
 	"console":
 	{
-		"height": 125.0
+		"height": 125.0,
+		"history":
+		[
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+		]
 	},
 	"distraction_free":
 	{
@@ -754,8 +779,42 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/Users/keel/dev/hexo",
+		"/Users/keel/dev/hexo/source",
+		"/Users/keel/dev/hexo/source/_posts"
+	],
 	"file_history":
 	[
+		"/Users/keel/dev/hexo/themes/landscape/layout/_partial/head.ejs",
+		"/Users/keel/dev/hexo/themes/next/layout/_partials/head.swig",
+		"/Users/keel/dev/hexo/themes/landscape/layout/_partial/header.ejs",
+		"/Users/keel/dev/hexo/source/json.htm",
+		"/Users/keel/dev/hexo/source/CNAME",
+		"/Users/keel/dev/hexo/public/CNAME",
+		"/Users/keel/dev/hexo/source/_posts/nodejs-trap.md",
+		"/Users/keel/dev/hexo/source/_posts/update-openssh-6.md",
+		"/Users/keel/dev/hexo/themes/landscape/_config.yml",
+		"/Users/keel/dev/hexo/themes/next/_config.yml",
+		"/Users/keel/dev/hexo/_config.yml",
+		"/Users/keel/dev/dsNode/.git/config",
+		"/Users/keel/dev/loyooProjects/todo/.git/config",
+		"/Users/keel/dev/keel.github.io/.git/config",
+		"/Users/keel/dev/loyooProjects/todoList/.git/config",
+		"/Users/keel/dev/lySms/.git/config",
+		"/Users/keel/dev/loyooProjects/kefu/.git/config",
+		"/Users/keel/dev/loyooProjects/kefu/.git/COMMIT_EDITMSG",
+		"/Users/keel/dev/hexo/source/_posts/try-hexo.md",
+		"/Users/keel/dev/hexo/source/_posts/hexo-ftpsync-bug.md",
+		"/Users/keel/dev/hexo/node_modules/jsftp/lib/jsftp.js",
+		"/Users/keel/dev/hexo/node_modules/parse-listing/src/parser.js",
+		"/Users/keel/dev/loyooProjects/parse-listing/src/parser.js",
+		"/Users/keel/dev/hexo/node_modules/ftpsync/lib/ftpsync.js",
+		"/Users/keel/dev/hexo/themes/next/source/css/main.styl",
+		"/Users/keel/Desktop/FileZilla.xml",
+		"/Users/keel/dev/hexo/source/about/index.md",
+		"/Users/keel/dev/hexo/source/_posts/hello-world.md",
 		"/Users/keel/dev/lySms/lib/klog.js",
 		"/Users/keel/dev/lySms/lib/moParser.js",
 		"/Users/keel/dev/lySms/lib/mo.js",
@@ -855,35 +914,7 @@
 		"/Users/keel/dev/tasks/9081.1477480949 in2out.dmp",
 		"/Users/keel/dev/tasks/8090.1477536072 in2out.dmp",
 		"/Users/keel/dev/tasks/8090.1477536039 in2out.dmp",
-		"/Users/keel/dev/tasks/8090.1477536040 in2out.dmp",
-		"/Users/keel/dev/lySms/lib/portProxy.js",
-		"/Users/keel/dev/lySms/lib/sms.js",
-		"/Users/keel/Downloads/dispatcher-cart.xml",
-		"/Users/keel/dev/sdk.html",
-		"/Users/keel/Downloads/EgamePay.txt",
-		"/Users/keel/dev/lySms/config.json",
-		"/Users/keel/Downloads/photo/WEB-INF/freemarker/website/footer.ftl",
-		"/Users/keel/Downloads/blacklist.txt",
-		"/Users/keel/Documents/devTools/android-sdk/tools/proguard/bin/proguardgui.sh",
-		"/Users/keel/dev/lySms/web/mtTemplet.js",
-		"/Users/keel/dev/lySms/web/channel.js",
-		"/Users/keel/dev/lySms/lib/moHandler.js",
-		"/Users/keel/dev/lySms/web/tpls/channelUpdate.jst",
-		"/Users/keel/Documents/sdk.html",
-		"/Users/keel/dev/lySms/web/tpls/header.def",
-		"/Users/keel/dev/lySms/web/sdk.js",
-		"/Users/keel/dev/lySms/web/curdManager.js",
-		"/Users/keel/dev/lySms/web/cacheWeb.js",
-		"/Users/keel/dev/lySms/test.js",
-		"/Users/keel/dev/lySms/lib/mtt.js",
-		"/Users/keel/dev/cap.txt",
-		"/Users/keel/dev/xxx.xml",
-		"/Users/keel/Documents/NMSC(ISMP) WSDL/下行样本 短信.txt",
-		"/Users/keel/Documents/NMSC(ISMP) WSDL/wsdl2java所有生成代码(非官方)/readme.txt.dump",
-		"/Users/keel/Documents/NMSC(ISMP) WSDL/wsdl2java所有生成代码(非官方)/readme.txt",
-		"/Users/keel/dev/lySms/web/public/css/app.css",
-		"/Users/keel/dev/lySms/web/enc2web.js",
-		"/Users/keel/Downloads/1223log.txt.dump"
+		"/Users/keel/dev/tasks/8090.1477536040 in2out.dmp"
 	],
 	"find":
 	{
@@ -894,6 +925,7 @@
 		"height": 0.0,
 		"where_history":
 		[
+			"<open folders>",
 			"/Users/keel/dev/lySms/lib",
 			"<open folders>",
 			"/Users/keel/dev/lySms/lib",
@@ -921,6 +953,59 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"abc",
+			"keel",
+			"帐号",
+			"keel",
+			"duoshuo_shortname",
+			"RE_DOSEntry",
+			"useLis",
+			"('>>>>>>>>>>>>",
+			"RE_DOSEntry",
+			"RE_DOSEntry2",
+			"RE_DOSEntry",
+			"filePath",
+			"RE_DOSEntry",
+			"filePath",
+			"-----",
+			">>>>>>",
+			"msdos",
+			"filePath",
+			"parseEntry",
+			"entries",
+			"filePath",
+			"list",
+			"listing",
+			"filePath",
+			"getPasvSocket",
+			"filePath",
+			"getGetSocket",
+			"path",
+			">>>>>>>",
+			">>>>>>",
+			"filePath",
+			"useList",
+			"stat",
+			"Net",
+			"util",
+			"useList",
+			"filePath",
+			"execute",
+			"raw",
+			"stat",
+			"path",
+			"listing",
+			"filePath",
+			"listing",
+			"data",
+			"stat",
+			"raw",
+			"raw.stat",
+			"ListingParser",
+			"ls",
+			"font-awesome",
+			"ava",
+			"mist",
 			"black.check",
 			"toMTime",
 			"check",
@@ -995,60 +1080,7 @@
 			"channel",
 			",",
 			"__filename",
-			"eee.out(err)",
-			"console.error(err,err.stack)",
-			"console.error(",
-			"eee.ee(err)",
-			"callback(err)",
-			"callback(e,",
-			"callback(err",
-			"eee.out(err)",
-			"console.error(err)",
-			"console.error(err.stack)",
-			"console.error(err.)",
-			"console.error(err)",
-			"console.error(err,err.stack)",
-			"console.error(err",
-			"eee.ee(err)",
-			"eee.ee(err",
-			"callback(err)",
-			"callback(e,",
-			"callback(err,",
-			"callback(e,",
-			"callback(err",
-			"eee.out(e)",
-			"eee.out(err)",
-			"console.error(e,e.stack)",
-			"console.error(err,err.stack)",
-			"console.error(e",
-			"console.error(err,err.stack)",
-			"eee.ee(err",
-			"callback(err)",
-			"console.error(",
-			"eee.out(err",
-			"console.error(err,err.stack)",
-			"console.error(err",
-			"eee.ee(err)",
-			"callback(err)",
-			"callback(err",
-			"eee.ee(err)",
-			"callback(err)",
-			"eee.out(err)",
-			"console.error(e",
-			"console.error(err,err.stack)",
-			"console.error(e",
-			"eee.out(err)",
-			"eee.out(err",
-			"console.error(err,err.stack);",
-			"eee.ee(err)",
-			"callback(err);",
-			"console.error(",
-			"callback",
-			"console.error(err",
-			",'db'",
-			",'redis'",
-			",'db'",
-			"callback('"
+			"eee.out(err)"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1121,29 +1153,92 @@
 			[
 				{
 					"buffer": 0,
-					"file": "source/_posts/hello-world.md",
+					"file": "source/_posts/nodejs-trap.md",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 815,
+						"buffer_size": 819,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								505,
-								505
+								459,
+								459
 							]
 						],
 						"settings":
 						{
-							"origin_encoding": "ASCII",
-							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+							"origin_encoding": "UTF-8",
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "source/_posts/try-hexo.md",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 393,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								309,
+								309
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "_config.yml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1778,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								399,
+								399
+							]
+						],
+						"settings":
+						{
+							"origin_encoding": "UTF-8",
+							"syntax": "Packages/YAML/YAML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -1184,10 +1279,16 @@
 	{
 		"height": 123.0
 	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
 	"output.git":
 	{
 		"height": 173.0
 	},
+	"pinned_build_system": "",
+	"project": "hexo.sublime-project",
 	"replace":
 	{
 		"height": 66.0
@@ -1196,6 +1297,7 @@
 	"select_file":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 			[
@@ -1220,15 +1322,32 @@
 	"select_project":
 	{
 		"height": 500.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
 		"width": 380.0
 	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 196.0,
-	"status_bar_visible": true
+	"side_bar_width": 294.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
 }
